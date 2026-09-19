@@ -33,7 +33,7 @@ cask "seaglass" do
 
   binary "seaglass"
 
-  postflight do
+  postflight_steps do
     if system_command("/usr/bin/xattr", args: ["-h"]).exit_status == 0
       system_command "/usr/bin/xattr", args: ["-dr", "com.apple.quarantine", "#{staged_path}/seaglass"]
     end
